@@ -1,0 +1,372 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_bot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="122dp" />
+
+    <ImageView
+        android:id="@+id/wic_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+
+        android:layout_marginTop="0dp"
+        android:contentDescription="@string/wic_logo"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bot"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/upper" />
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="15dp" />
+
+    <TextView
+        android:id="@+id/tv_fajir1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="11:45"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_sunrise1"
+        app:layout_constraintTop_toTopOf="@+id/top" />
+
+    <TextView
+        android:id="@+id/tv_sunrise1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11:45"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_fajir1"
+        app:layout_constraintLeft_toRightOf="@+id/tv_fajir1"
+        app:layout_constraintRight_toLeftOf="@+id/tv_duhur1"
+        app:layout_constraintTop_toTopOf="@+id/tv_fajir1" />
+
+
+    <TextView
+        android:id="@+id/tv_duhur1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="11:45"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_fajir1"
+        app:layout_constraintLeft_toRightOf="@+id/tv_sunrise1"
+        app:layout_constraintRight_toLeftOf="@+id/tv_asir1"
+        app:layout_constraintTop_toTopOf="@+id/tv_fajir1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_isha1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11:45"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_maghrib1"
+        app:layout_constraintLeft_toRightOf="@+id/tv_maghrib1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_maghrib1" />
+
+    <TextView
+        android:id="@+id/tv_asir1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11:45"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_duhur1"
+        app:layout_constraintLeft_toRightOf="@+id/tv_duhur1"
+        app:layout_constraintRight_toLeftOf="@+id/tv_maghrib1"
+        app:layout_constraintTop_toTopOf="@+id/tv_duhur1" />
+
+    <TextView
+        android:id="@+id/tv_maghrib1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11:45"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_asir1"
+        app:layout_constraintLeft_toRightOf="@+id/tv_asir1"
+        app:layout_constraintRight_toLeftOf="@+id/tv_isha1"
+        app:layout_constraintTop_toTopOf="@+id/tv_asir1" />
+
+
+    <TextView
+        android:id="@+id/tv_fajir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="11:45"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_fajir1"
+        app:layout_constraintRight_toRightOf="@+id/tv_fajir1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_fajir1" />
+
+    <TextView
+        android:id="@+id/tv_sunrise"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:text="-"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_sunrise"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_sunrise1"
+        app:layout_constraintRight_toRightOf="@+id/tv_sunrise1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sunrise1" />
+
+    <TextView
+        android:id="@+id/tv_duhur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="11:45"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_duhur1"
+        app:layout_constraintRight_toRightOf="@+id/tv_duhur1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_duhur1" />
+
+
+    <TextView
+        android:id="@+id/tv_asir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="11:45"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_asir1"
+        app:layout_constraintRight_toRightOf="@+id/tv_asir1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_asir1" />
+
+    <TextView
+        android:id="@+id/tv_maghrib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="11:45"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_maghrib1"
+        app:layout_constraintRight_toRightOf="@+id/tv_maghrib1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_maghrib1" />
+
+    <TextView
+        android:id="@+id/tv_isha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="11:45"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_isha1"
+        app:layout_constraintRight_toRightOf="@+id/tv_isha1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_isha1" />
+
+
+    <ImageView
+        android:id="@+id/weather_fajir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_fajir1"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_fajir1"
+        app:layout_constraintRight_toRightOf="@+id/tv_fajir1"
+        app:srcCompat="@mipmap/weather_fajir" />
+
+    <ImageView
+        android:id="@+id/weather_sunrise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/weather_duhur"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_sunrise1"
+        app:layout_constraintRight_toRightOf="@+id/tv_sunrise1"
+        app:srcCompat="@mipmap/weather_sunrise" />
+
+    <ImageView
+        android:id="@+id/weather_duhur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_duhur1"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_duhur1"
+        app:layout_constraintRight_toRightOf="@+id/tv_duhur1"
+        app:srcCompat="@mipmap/weather_duhur"
+        app:layout_constraintHorizontal_bias="0.481" />
+
+    <ImageView
+        android:id="@+id/weather_asir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_asir1"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_asir1"
+        app:layout_constraintRight_toRightOf="@+id/tv_asir1"
+        app:srcCompat="@mipmap/weather_asir"
+        app:layout_constraintHorizontal_bias="0.478" />
+
+    <ImageView
+        android:id="@+id/weather_maghrib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_maghrib1"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_maghrib1"
+        app:layout_constraintRight_toRightOf="@+id/tv_maghrib1"
+        app:srcCompat="@mipmap/weather_maghrib"
+        app:layout_constraintHorizontal_bias="0.518" />
+
+    <ImageView
+        android:id="@+id/weather_isha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_isha1"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_isha1"
+        app:layout_constraintRight_toRightOf="@+id/tv_isha1"
+        app:srcCompat="@mipmap/weather_isha"
+        app:layout_constraintHorizontal_bias="0.483" />
+
+    <TextView
+        android:id="@+id/text_fajir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="Fajir"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_fajir1"
+        app:layout_constraintRight_toRightOf="@+id/tv_fajir1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_fajir" />
+
+    <TextView
+        android:id="@+id/text_sunrise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunrise"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_sunrise1"
+        app:layout_constraintRight_toRightOf="@+id/tv_sunrise1"
+        app:layout_constraintTop_toTopOf="@+id/text_fajir" />
+
+    <TextView
+        android:id="@+id/text_Duhur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="Duhur"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_duhur1"
+        app:layout_constraintRight_toRightOf="@+id/tv_duhur1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_duhur" />
+
+    <TextView
+        android:id="@+id/text_Asir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="Asir"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_asir1"
+        app:layout_constraintRight_toRightOf="@+id/tv_asir1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_asir" />
+
+    <TextView
+        android:id="@+id/text_maghrib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="11dp"
+        android:text="Maghrib"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_maghrib1"
+        app:layout_constraintRight_toRightOf="@+id/tv_maghrib1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_maghrib" />
+
+
+    <TextView
+        android:id="@+id/text_isha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="Isha'a"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_isha1"
+        app:layout_constraintRight_toRightOf="@+id/tv_isha1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_isha" />
+
+
+    <FrameLayout
+        android:id="@+id/fragment_home_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_twitter_title"
+        android:layout_marginTop="5dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/line_first"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="@+id/wic_logo"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weather_fajir"
+        app:srcCompat="@mipmap/line"
+        tools:layout_editor_absoluteY="104dp" />
+
+    <ImageView
+        android:id="@+id/line_second"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toTopOf="@id/text_fajir"
+        app:layout_constraintLeft_toLeftOf="@+id/wic_logo"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@mipmap/line"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <TextView
+        android:id="@+id/home_twitter_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="serif-monospace"
+        android:text="Twitter Feed"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wic_logo" />
+
+
+</android.support.constraint.ConstraintLayout>
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sohaeb.wia">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/wia_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/wia_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Main_app"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- [START firebase_service] -->
+        <service
+            android:enabled="true"
+            android:exported="true"
+            android:name=".Other.FirebaseMessaging.HandleMessages">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_service] -->
+        <!-- [START firebase_iid_service] -->
+        <service android:name=".Other.FirebaseMessaging.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_iid_service] -->
+
+        <activity
+            android:name=".Website.openHTML"
+            android:screenOrientation="portrait" />
+
+
+    </application>
+
+</manifest>

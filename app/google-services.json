@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "978365114304",
+    "firebase_url": "https://wiassociation-9e259.firebaseio.com",
+    "project_id": "wiassociation-9e259",
+    "storage_bucket": "wiassociation-9e259.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978365114304:android:0343e1474cb6a679",
+        "android_client_info": {
+          "package_name": "com.sohaeb.wia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978365114304-g21sg9v4tgrqbpb07ah09q931oavr3qs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sohaeb.wia",
+            "certificate_hash": "b26e311ee98148b21c13f198bf13c36456a94485"
+          }
+        },
+        {
+          "client_id": "978365114304-3c0mte6o069n6naqcthr1u4s2fs0lto4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfSpN1y2W04mRflkTF1XOwppdF-s-QxzU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978365114304-3c0mte6o069n6naqcthr1u4s2fs0lto4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
