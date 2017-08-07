@@ -42,8 +42,8 @@ public class TwitterFragment extends ListFragment {
         View view = inflater.inflate(R.layout.fragment_twitter_list, container, false);
 
         UserTimeline userTimeline = new UserTimeline.Builder()
-                .maxItemsPerRequest(10)
-                .screenName("myWIA")
+                .maxItemsPerRequest(7)
+                .screenName("WIA_ca")
                 .includeRetweets(false)
                 .includeReplies(false)
                 .build();

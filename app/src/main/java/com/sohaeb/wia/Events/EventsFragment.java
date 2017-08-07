@@ -10,13 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.sohaeb.wia.R;
 import com.sohaeb.wia.Events.Model.Event;
+import com.sohaeb.wia.R;
 
 
 /**
@@ -33,6 +35,8 @@ public class EventsFragment extends Fragment {
     private LinearLayoutManager mManager;
     protected DatabaseReference mChatRef;
 
+
+
     public EventsFragment() {
         // Required empty public constructor
     }
@@ -43,6 +47,7 @@ public class EventsFragment extends Fragment {
 
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,12 +85,52 @@ public class EventsFragment extends Fragment {
                 mChatRef) {
 
             @Override
+            public EventHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                EventHolder viewHolder = super.onCreateViewHolder(parent, viewType);
+                Button button = (Button) parent.findViewById(R.id.event_layout_more_info);
+
+
+                viewHolder.setOnClickListener(new EventHolder.ClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Toast.makeText(getActivity(), "Item clicked at " + position, Toast.LENGTH_SHORT).show();
+//                        Button button = (Button) view.findViewById(R.id.event_layout_more_info);
+
+
+                    }
+                });
+                return viewHolder;
+            }
+
+
+            @Override
             public void populateViewHolder(EventHolder holder, Event event, int position) {
                 holder.bind(event, getActivity());
             }
         };
 
         mMessages.setAdapter(mAdapter);
+
+//        mMessages.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+//
+//                                             @Override
+//                                             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+//                                                 return false;
+//                                             }
+//
+//                                             @Override
+//                                             public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+//                                                 Log.d(TAG, "onTouchEvent: "+  rv.toString());
+//
+//                                             }
+//
+//                                             @Override
+//                                             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+//
+//                                             }
+//                                         }
+//        );
+
 
 //        mChatRef.addValueEventListener(new ValueEventListener() {
 //

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -55,6 +56,8 @@ public class HomeFragment extends ListFragment {
     private TextView text_maghrib;
     private TextView text_isha;
 
+    private ImageView fajir_weather, duhue_weather, sunrise_weather, asir_weather, maghrib_weather, isha_weather;
+
     private ListView recyclerView;
 
     private char[] chars;
@@ -94,6 +97,8 @@ public class HomeFragment extends ListFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
+
+
         textView_f = (TextView) view.findViewById(R.id.tv_fajir1);
         textView_fi = (TextView) view.findViewById(R.id.tv_fajir);
         textView_d = (TextView) view.findViewById(R.id.tv_duhur1);
@@ -112,6 +117,13 @@ public class HomeFragment extends ListFragment {
         text_maghrib = (TextView) view.findViewById(R.id.text_maghrib);
         text_isha = (TextView) view.findViewById(R.id.text_isha);
 
+        fajir_weather = (ImageView) view.findViewById(R.id.weather_fajir);
+        duhue_weather = (ImageView) view.findViewById(R.id.weather_duhur);
+        sunrise_weather = (ImageView) view.findViewById(R.id.weather_sunrise);
+        asir_weather = (ImageView) view.findViewById(R.id.weather_asir);
+        maghrib_weather = (ImageView) view.findViewById(R.id.weather_maghrib);
+        isha_weather = (ImageView) view.findViewById(R.id.weather_isha);
+
         Date date = new Date();
         String month = (String) DateFormat.format("MM", date);
         String day = (String) DateFormat.format("dd", date);
@@ -128,7 +140,8 @@ public class HomeFragment extends ListFragment {
         int currentTime = currentHour + currentMin;
         Log.d(TAG, "onViewCreated: currentTime " + currentTime);
 
-        String[] array = (String[]) readCsv(getActivity(), month, day);
+        String[] array_from_csv = (String[]) readCsv(getActivity(), month, day);
+        Log.d(TAG, "onViewCreated: Array from csv library is " + array_from_csv[9].toString());
 
         /*
         //
@@ -136,7 +149,7 @@ public class HomeFragment extends ListFragment {
         //
         */
 
-        chars = array[1].toCharArray();
+        chars = array_from_csv[1].toCharArray();
         int hour_fajir = (100 * Character.getNumericValue(chars[0])) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
         //(TAG, "onViewCreated: hour_fajir " + hour_fajir);
         /*
@@ -145,7 +158,7 @@ public class HomeFragment extends ListFragment {
         //
         */
 
-        chars = array[3].toCharArray();
+        chars = array_from_csv[3].toCharArray();
         int hour_sunrise = (100 * Character.getNumericValue(chars[0])) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
         //(TAG, "onViewCreated: hour_sunrise " + hour_sunrise);
         /*
@@ -154,7 +167,7 @@ public class HomeFragment extends ListFragment {
         //
         */
 
-        chars = array[4].toCharArray();
+        chars = array_from_csv[4].toCharArray();
         int hour_duhur = (100 * (Character.getNumericValue(chars[0]) + 12)) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
         //(TAG, "onViewCreated: hour_duhur " + hour_duhur);
         /*
@@ -163,7 +176,7 @@ public class HomeFragment extends ListFragment {
         //
         */
 
-        chars = array[6].toCharArray();
+        chars = array_from_csv[6].toCharArray();
         int hour_asir = (100 * (Character.getNumericValue(chars[0]) + 12)) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
         //(TAG, "onViewCreated: hour_asir " + hour_asir);
         /*
@@ -172,7 +185,7 @@ public class HomeFragment extends ListFragment {
         //
         */
 
-        chars = array[8].toCharArray();
+        chars = array_from_csv[8].toCharArray();
         int hour_maghrib = (100 * (Character.getNumericValue(chars[0]) + 12)) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
         Log.d(TAG, "onViewCreated: hour_maghrib " + hour_maghrib);
         /*
@@ -181,11 +194,19 @@ public class HomeFragment extends ListFragment {
         //
         */
 
-        chars = array[10].toCharArray();
-        Log.d(TAG, "onViewCreated: " + chars[0] + " " + chars[1] + " " + chars[2] + " " + chars[3] + chars[4] + " ");
-        int hour_isha = ((1000 * (Character.getNumericValue(chars[0]))) + (100 * (Character.getNumericValue(chars[1]))) + 1200) + Character.getNumericValue(chars[3]) * 10 + Character.getNumericValue(chars[4]);
-        Log.d(TAG, "onViewCreated: hour_isha " + hour_isha);
 
+        chars = array_from_csv[10].toCharArray();
+//        Log.d(TAG, "onViewCreated: isha from csv " + array_from_csv[10]);
+//        Log.d(TAG, "onViewCreated: chars is " + chars[3]);
+//        Log.d(TAG, "onViewCreated: " + chars[0] + " " + chars[1] + " " + chars[2] + " " + chars[3] + chars[4] + " ");
+        int hour_isha;
+        if (chars.length != 4) {
+            hour_isha = ((1000 * (Character.getNumericValue(chars[0]))) + (100 * (Character.getNumericValue(chars[1]))) + 1200) + Character.getNumericValue(chars[3]) * 10 + Character.getNumericValue(chars[4]);
+            Log.d(TAG, "onViewCreated: if hour_isha " + hour_isha);
+        } else {
+            hour_isha = ((1000 * (Character.getNumericValue(0))) + (100 * (Character.getNumericValue(chars[0]))) + 1200) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
+            Log.d(TAG, "onViewCreated: else hour_isha " + hour_isha);
+        }
         // ---- if -----
 
         if (currentTime >= hour_fajir && currentTime < hour_sunrise) {
@@ -197,6 +218,17 @@ public class HomeFragment extends ListFragment {
 //            textView_fi.setTypeface(null, Typeface.BOLD);
             text_fajir.setTextColor(Color.parseColor("#03A9F4"));
             text_fajir.setTypeface(null, Typeface.BOLD);
+            fajir_weather.setImageResource(R.mipmap.weather_fajir);
+        } else if (currentTime >= hour_sunrise && currentTime < hour_sunrise + 10) {
+            //(TAG, "onViewCreated: Hour duhur + asir" + hour_duhur + " " + hour_asir);
+            //(TAG, "onViewCreated: Duhur");
+            // Duhur
+            textView_d.setTextColor(Color.parseColor("#03A9F4"));
+            textView_d.setTypeface(null, Typeface.BOLD);
+            textView_di.setTextColor(Color.parseColor("#03A9F4"));
+            textView_di.setTypeface(null, Typeface.BOLD);
+            text_duhur.setTextColor(Color.parseColor("#03A9F4"));
+            sunrise_weather.setImageResource(R.mipmap.weather_sunrise);
         } else if (currentTime >= hour_duhur && currentTime < hour_asir) {
             //(TAG, "onViewCreated: Hour duhur + asir" + hour_duhur + " " + hour_asir);
             //(TAG, "onViewCreated: Duhur");
@@ -206,6 +238,7 @@ public class HomeFragment extends ListFragment {
             textView_di.setTextColor(Color.parseColor("#03A9F4"));
             textView_di.setTypeface(null, Typeface.BOLD);
             text_duhur.setTextColor(Color.parseColor("#03A9F4"));
+            duhue_weather.setImageResource(R.mipmap.weather_duhur);
         } else if (currentTime >= hour_asir && currentTime < hour_maghrib) {
             //(TAG, "onViewCreated: Hour duhur + asir" + hour_duhur + " " + hour_asir + " " + hour_maghrib);
             //(TAG, "onViewCreated: Asir");
@@ -215,6 +248,7 @@ public class HomeFragment extends ListFragment {
             textView_ai.setTextColor(Color.parseColor("#03A9F4"));
             textView_ai.setTypeface(null, Typeface.BOLD);
             text_asir.setTextColor(Color.parseColor("#03A9F4"));
+            asir_weather.setImageResource(R.mipmap.weather_asir);
         } else if (currentTime >= hour_maghrib && currentTime < hour_isha) {
             // Maghrib
             Log.d(TAG, "onViewCreated: maghrib" + hour_isha);
@@ -223,6 +257,7 @@ public class HomeFragment extends ListFragment {
             textView_mi.setTextColor(Color.parseColor("#03A9F4"));
             textView_mi.setTypeface(null, Typeface.BOLD);
             text_maghrib.setTextColor(Color.parseColor("#03A9F4"));
+            maghrib_weather.setImageResource(R.mipmap.weather_maghrib);
 
         } else if (currentTime >= hour_isha || currentTime < 100) {
             Log.d(TAG, "onViewCreated: " + currentHour + " " + hour_isha + 200);
@@ -232,20 +267,21 @@ public class HomeFragment extends ListFragment {
             textView_ia.setTextColor(Color.parseColor("#03A9F4"));
             textView_ia.setTypeface(null, Typeface.BOLD);
             text_isha.setTextColor(Color.parseColor("#03A9F4"));
+            isha_weather.setImageResource(R.mipmap.weather_isha);
         }
 
-        textView_f.setText(array[1].toString());
-        textView_fi.setText(array[2].toString());
-        textView_s.setText(array[3].toString());
-        textView_s.setText(array[3].toString());
-        textView_d.setText(array[4].toString());
-        textView_di.setText(array[5].toString());
-        textView_a.setText(array[6].toString());
-        textView_ai.setText(array[7].toString());
-        textView_m.setText(array[8].toString());
-        textView_mi.setText(array[9].toString());
-        textView_i.setText(array[10].toString());
-        textView_ia.setText(array[11].toString());
+        textView_f.setText(array_from_csv[1].toString());
+        textView_fi.setText(array_from_csv[2].toString());
+        textView_s.setText(array_from_csv[3].toString());
+        textView_s.setText(array_from_csv[3].toString());
+        textView_d.setText(array_from_csv[4].toString());
+        textView_di.setText(array_from_csv[5].toString());
+        textView_a.setText(array_from_csv[6].toString());
+        textView_ai.setText(array_from_csv[7].toString());
+        textView_m.setText(array_from_csv[8].toString());
+        textView_mi.setText(array_from_csv[9].toString());
+        textView_i.setText(array_from_csv[10].toString());
+        textView_ia.setText(array_from_csv[11].toString());
 
         com.sohaeb.wia.Home.TwitterFragment twitterFragment = new com.sohaeb.wia.Home.TwitterFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();

@@ -18,7 +18,7 @@
         android:layout_weight="1"
         android:divider="#e1e8ed"
         android:dividerHeight="1dp"
-        android:scrollbarFadeDuration="10000"
+        android:scrollbarFadeDuration="100000"
         android:drawSelectorOnTop="false"
         />
 

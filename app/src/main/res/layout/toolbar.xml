@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="top"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context="com.sohaeb.wia.Other.Test.test">
+    android:layout_height="wrap_content">
 
 
     <android.support.v7.widget.Toolbar

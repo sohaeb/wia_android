@@ -79,7 +79,8 @@ public class AboutFragments extends Fragment {
         editText.setText("About Us");
 
         ListView listView = (ListView) view.findViewById(R.id.list_about);
-        String[] listItems = {"Board Of Directors", "Our Constitution", "Credits & Support"};
+        String[] listItems = {
+                "Credits & Support"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listItems);
         listView.setAdapter(adapter);
 
