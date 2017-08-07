@@ -90,11 +90,11 @@ public class Main_app extends AppCompatActivity {
 
         MyDatabaseUtil.getDatabase();
 
-        HomeFragment frag = new HomeFragment();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content, frag);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+//        HomeFragment frag = new HomeFragment();
+//        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//        fragmentTransaction.replace(R.id.content, frag);
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.commit();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

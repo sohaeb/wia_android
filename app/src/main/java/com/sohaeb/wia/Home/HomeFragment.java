@@ -110,12 +110,14 @@ public class HomeFragment extends ListFragment {
         textView_i = (TextView) view.findViewById(R.id.tv_isha1);
         textView_ia = (TextView) view.findViewById(R.id.tv_isha);
         textView_s = (TextView) view.findViewById(R.id.tv_sunrise1);
+        TextView textView_si = (TextView) view.findViewById(R.id.tv_sunrise);
 
         text_fajir = (TextView) view.findViewById(R.id.text_fajir);
         text_duhur = (TextView) view.findViewById(R.id.text_Duhur);
         text_asir = (TextView) view.findViewById(R.id.text_Asir);
         text_maghrib = (TextView) view.findViewById(R.id.text_maghrib);
         text_isha = (TextView) view.findViewById(R.id.text_isha);
+        TextView text_sunrise = (TextView) view.findViewById(R.id.text_sunrise);
 
         fajir_weather = (ImageView) view.findViewById(R.id.weather_fajir);
         duhue_weather = (ImageView) view.findViewById(R.id.weather_duhur);
@@ -141,7 +143,7 @@ public class HomeFragment extends ListFragment {
         Log.d(TAG, "onViewCreated: currentTime " + currentTime);
 
         String[] array_from_csv = (String[]) readCsv(getActivity(), month, day);
-        Log.d(TAG, "onViewCreated: Array from csv library is " + array_from_csv[9].toString());
+//        Log.d(TAG, "onViewCreated: Array from csv library is " + array_from_csv[9].toString());
 
         /*
         //
@@ -151,7 +153,8 @@ public class HomeFragment extends ListFragment {
 
         chars = array_from_csv[1].toCharArray();
         int hour_fajir = (100 * Character.getNumericValue(chars[0])) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
-        //(TAG, "onViewCreated: hour_fajir " + hour_fajir);
+        Log.d(TAG, "onViewCreated: hour_fajir " + hour_fajir );
+
         /*
         //
         // Sunrise - 3
@@ -160,7 +163,7 @@ public class HomeFragment extends ListFragment {
 
         chars = array_from_csv[3].toCharArray();
         int hour_sunrise = (100 * Character.getNumericValue(chars[0])) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
-        //(TAG, "onViewCreated: hour_sunrise " + hour_sunrise);
+        Log.d(TAG, "onViewCreated: hour_sunrise " + hour_sunrise);
         /*
         //
         // Duhur - 4
@@ -169,7 +172,7 @@ public class HomeFragment extends ListFragment {
 
         chars = array_from_csv[4].toCharArray();
         int hour_duhur = (100 * (Character.getNumericValue(chars[0]) + 12)) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
-        //(TAG, "onViewCreated: hour_duhur " + hour_duhur);
+        Log.d(TAG, "onViewCreated: hour_duhur " + hour_duhur);
         /*
         //
         // asir - 6
@@ -178,7 +181,7 @@ public class HomeFragment extends ListFragment {
 
         chars = array_from_csv[6].toCharArray();
         int hour_asir = (100 * (Character.getNumericValue(chars[0]) + 12)) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
-        //(TAG, "onViewCreated: hour_asir " + hour_asir);
+        Log.d(TAG, "onViewCreated: hour_asir " + hour_asir);
         /*
         //
         // Maghrib - 8
@@ -200,18 +203,22 @@ public class HomeFragment extends ListFragment {
 //        Log.d(TAG, "onViewCreated: chars is " + chars[3]);
 //        Log.d(TAG, "onViewCreated: " + chars[0] + " " + chars[1] + " " + chars[2] + " " + chars[3] + chars[4] + " ");
         int hour_isha;
-        if (chars.length != 4) {
+        if (chars.length == 5) {
             hour_isha = ((1000 * (Character.getNumericValue(chars[0]))) + (100 * (Character.getNumericValue(chars[1]))) + 1200) + Character.getNumericValue(chars[3]) * 10 + Character.getNumericValue(chars[4]);
             Log.d(TAG, "onViewCreated: if hour_isha " + hour_isha);
         } else {
-            hour_isha = ((1000 * (Character.getNumericValue(0))) + (100 * (Character.getNumericValue(chars[0]))) + 1200) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
+            hour_isha = ((1000 * 0) + (100 * (Character.getNumericValue(chars[0]))) + 1200) + Character.getNumericValue(chars[2]) * 10 + Character.getNumericValue(chars[3]);
             Log.d(TAG, "onViewCreated: else hour_isha " + hour_isha);
         }
+
+        //
         // ---- if -----
+        //
+
+        // Fajri
 
         if (currentTime >= hour_fajir && currentTime < hour_sunrise) {
-            //(TAG, "onViewCreated: fajir");
-            // fajir
+
             textView_f.setTextColor(Color.parseColor("#03A9F4"));
 //            textView_f.setTypeface(null, Typeface.BOLD);
             textView_fi.setTextColor(Color.parseColor("#03A9F4"));
@@ -219,19 +226,23 @@ public class HomeFragment extends ListFragment {
             text_fajir.setTextColor(Color.parseColor("#03A9F4"));
             text_fajir.setTypeface(null, Typeface.BOLD);
             fajir_weather.setImageResource(R.mipmap.weather_fajir);
-        } else if (currentTime >= hour_sunrise && currentTime < hour_sunrise + 10) {
-            //(TAG, "onViewCreated: Hour duhur + asir" + hour_duhur + " " + hour_asir);
-            //(TAG, "onViewCreated: Duhur");
+
+            // Sunrise
+
+        } else if (currentTime >= hour_sunrise && currentTime < hour_sunrise + 15) {
+
             // Duhur
-            textView_d.setTextColor(Color.parseColor("#03A9F4"));
-            textView_d.setTypeface(null, Typeface.BOLD);
-            textView_di.setTextColor(Color.parseColor("#03A9F4"));
-            textView_di.setTypeface(null, Typeface.BOLD);
-            text_duhur.setTextColor(Color.parseColor("#03A9F4"));
+            textView_s.setTextColor(Color.parseColor("#03A9F4"));
+            textView_s.setTypeface(null, Typeface.BOLD);
+            textView_si.setTextColor(Color.parseColor("#03A9F4"));
+            textView_si.setTypeface(null, Typeface.BOLD);
+            text_sunrise.setTextColor(Color.parseColor("#03A9F4"));
             sunrise_weather.setImageResource(R.mipmap.weather_sunrise);
+
+            // Duhur
+
         } else if (currentTime >= hour_duhur && currentTime < hour_asir) {
-            //(TAG, "onViewCreated: Hour duhur + asir" + hour_duhur + " " + hour_asir);
-            //(TAG, "onViewCreated: Duhur");
+
             // Duhur
             textView_d.setTextColor(Color.parseColor("#03A9F4"));
             textView_d.setTypeface(null, Typeface.BOLD);
@@ -239,19 +250,24 @@ public class HomeFragment extends ListFragment {
             textView_di.setTypeface(null, Typeface.BOLD);
             text_duhur.setTextColor(Color.parseColor("#03A9F4"));
             duhue_weather.setImageResource(R.mipmap.weather_duhur);
-        } else if (currentTime >= hour_asir && currentTime < hour_maghrib) {
-            //(TAG, "onViewCreated: Hour duhur + asir" + hour_duhur + " " + hour_asir + " " + hour_maghrib);
-            //(TAG, "onViewCreated: Asir");
+
             // Asir
+
+        } else if (currentTime >= hour_asir && currentTime < hour_maghrib) {
+
+
             textView_a.setTextColor(Color.parseColor("#03A9F4"));
             textView_a.setTypeface(null, Typeface.BOLD);
             textView_ai.setTextColor(Color.parseColor("#03A9F4"));
             textView_ai.setTypeface(null, Typeface.BOLD);
             text_asir.setTextColor(Color.parseColor("#03A9F4"));
             asir_weather.setImageResource(R.mipmap.weather_asir);
-        } else if (currentTime >= hour_maghrib && currentTime < hour_isha) {
+
             // Maghrib
-            Log.d(TAG, "onViewCreated: maghrib" + hour_isha);
+
+        } else if (currentTime >= hour_maghrib && currentTime < hour_isha) {
+
+
             textView_m.setTextColor(Color.parseColor("#03A9F4"));
             textView_m.setTypeface(null, Typeface.BOLD);
             textView_mi.setTextColor(Color.parseColor("#03A9F4"));
@@ -259,9 +275,10 @@ public class HomeFragment extends ListFragment {
             text_maghrib.setTextColor(Color.parseColor("#03A9F4"));
             maghrib_weather.setImageResource(R.mipmap.weather_maghrib);
 
+            // Isha'a
+
         } else if (currentTime >= hour_isha || currentTime < 100) {
-            Log.d(TAG, "onViewCreated: " + currentHour + " " + hour_isha + 200);
-            //Isha
+
             textView_i.setTextColor(Color.parseColor("#03A9F4"));
             textView_i.setTypeface(null, Typeface.BOLD);
             textView_ia.setTextColor(Color.parseColor("#03A9F4"));
